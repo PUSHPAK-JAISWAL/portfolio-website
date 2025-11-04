@@ -8,26 +8,28 @@ interface Achievement {
   description: string;
   date: string;
   link?: string;
+  linkedinPostUrl?: string;
   tags?: string[];
 }
 
 // Add your achievements here
 const achievements: Achievement[] = [
-  {
-    title: "Example Achievement 1",
-    description: "Brief description of your achievement. Replace this with your actual achievement details.",
-    date: "2024",
-    link: "https://example.com/achievement1",
-    tags: ["Competition", "First Place"],
-  },
-  {
-    title: "Example Achievement 2",
-    description: "Another achievement description. Add your real achievements here.",
-    date: "2023",
-    link: "https://example.com/achievement2",
-    tags: ["Hackathon", "Winner"],
-  },
-  // Add more achievements here
+  // Example with LinkedIn post embed:
+  // {
+  //   title: "Achievement Title",
+  //   description: "Brief description of your achievement",
+  //   date: "2024",
+  //   linkedinPostUrl: "https://www.linkedin.com/posts/...",
+  //   tags: ["Tag1", "Tag2"],
+  // },
+  // Example with regular link:
+  // {
+  //   title: "Example Achievement",
+  //   description: "Brief description",
+  //   date: "2024",
+  //   link: "https://example.com/achievement",
+  //   tags: ["Competition", "Winner"],
+  // },
 ];
 
 const Achievements = () => {
@@ -54,7 +56,7 @@ const Achievements = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {achievements.map((achievement, index) => (
-              <Card key={index} className="p-6 card-hover">
+              <Card key={index} className="p-6 card-hover animate-fade-in">
                 <div className="flex items-start gap-4">
                   <div className="p-2 rounded-lg bg-accent/10 shrink-0">
                     <Trophy className="w-6 h-6 text-accent" />
@@ -76,14 +78,24 @@ const Achievements = () => {
                       </div>
                     )}
 
-                    {achievement.link && (
-                      <Button variant="outline" size="sm" asChild>
-                        <a href={achievement.link} target="_blank" rel="noopener noreferrer">
-                          View Details
-                          <ExternalLink className="w-4 h-4 ml-2" />
-                        </a>
-                      </Button>
-                    )}
+                    <div className="flex gap-2">
+                      {achievement.linkedinPostUrl && (
+                        <Button variant="default" size="sm" asChild>
+                          <a href={achievement.linkedinPostUrl} target="_blank" rel="noopener noreferrer">
+                            View LinkedIn Post
+                            <ExternalLink className="w-4 h-4 ml-2" />
+                          </a>
+                        </Button>
+                      )}
+                      {achievement.link && (
+                        <Button variant="outline" size="sm" asChild>
+                          <a href={achievement.link} target="_blank" rel="noopener noreferrer">
+                            View Details
+                            <ExternalLink className="w-4 h-4 ml-2" />
+                          </a>
+                        </Button>
+                      )}
+                    </div>
                   </div>
                 </div>
               </Card>

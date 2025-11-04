@@ -4,10 +4,9 @@ import { Download, FileText } from "lucide-react";
 
 const Resume = () => {
   const handleDownload = () => {
-    // Replace with your actual resume file path
     const link = document.createElement('a');
     link.href = '/resume.pdf';
-    link.download = 'Your_Name_Resume.pdf';
+    link.download = 'Pushpak_Jaiswal_Resume.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

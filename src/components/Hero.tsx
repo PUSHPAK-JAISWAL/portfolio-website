@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, FileText, Award } from "lucide-react";
+import { Github, Linkedin, FileText, Award, Code2, Trophy } from "lucide-react";
 
 const Hero = () => {
   const scrollToSection = (id: string) => {
@@ -11,7 +11,7 @@ const Hero = () => {
       <div className="max-w-4xl mx-auto text-center space-y-8">
         <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-1000">
           <h1 className="text-5xl md:text-7xl font-bold">
-            Hi, I'm <span className="gradient-text">[Your Name]</span>
+            Hi, I'm <span className="gradient-text">Pushpak Jaiswal</span>
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground">
             Full Stack Developer | Problem Solver | Tech Enthusiast
@@ -36,18 +36,28 @@ const Hero = () => {
 
         <div className="flex gap-4 justify-center pt-4 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500">
           <Button variant="ghost" size="icon" asChild>
-            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/PUSHPAK-JAISWAL" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
               <Github className="w-5 h-5" />
             </a>
           </Button>
           <Button variant="ghost" size="icon" asChild>
-            <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/pushpak-jaiswal/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               <Linkedin className="w-5 h-5" />
             </a>
           </Button>
           <Button variant="ghost" size="icon" asChild>
-            <a href="https://www.geeksforgeeks.org/user/yourusername" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.geeksforgeeks.org/user/pushpakmoqg3/" target="_blank" rel="noopener noreferrer" aria-label="GeeksforGeeks">
               <Award className="w-5 h-5" />
+            </a>
+          </Button>
+          <Button variant="ghost" size="icon" asChild>
+            <a href="https://www.hackerrank.com/skills-verification" target="_blank" rel="noopener noreferrer" aria-label="HackerRank">
+              <Trophy className="w-5 h-5" />
+            </a>
+          </Button>
+          <Button variant="ghost" size="icon" asChild>
+            <a href="https://leetcode.com/u/pushpakmjaiswal/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
+              <Code2 className="w-5 h-5" />
             </a>
           </Button>
         </div>

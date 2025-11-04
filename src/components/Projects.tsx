@@ -25,8 +25,7 @@ const Projects = () => {
   useEffect(() => {
     const fetchRepos = async () => {
       try {
-        // Replace 'yourusername' with your actual GitHub username
-        const response = await fetch('https://api.github.com/users/yourusername/repos?sort=updated&per_page=6');
+        const response = await fetch('https://api.github.com/users/PUSHPAK-JAISWAL/repos?sort=updated&per_page=6');
         
         if (!response.ok) throw new Error('Failed to fetch repositories');
         
@@ -115,7 +114,7 @@ const Projects = () => {
 
         <div className="text-center mt-8">
           <Button variant="outline" asChild>
-            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/PUSHPAK-JAISWAL" target="_blank" rel="noopener noreferrer">
               View All Projects on GitHub
             </a>
           </Button>
