@@ -25,7 +25,7 @@ const Projects = () => {
   useEffect(() => {
     const fetchRepos = async () => {
       try {
-        const response = await fetch('https://api.github.com/users/PUSHPAK-JAISWAL/repos?sort=updated&per_page=6');
+        const response = await fetch('https://api.github.com/users/PUSHPAK-JAISWAL/repos?sort=updated&per_page=100');
         
         if (!response.ok) throw new Error('Failed to fetch repositories');
         
@@ -34,7 +34,7 @@ const Projects = () => {
       } catch (error) {
         toast({
           title: "Error fetching projects",
-          description: "Please check your GitHub username in the code",
+          description: "Unable to load GitHub repositories",
           variant: "destructive",
         });
       } finally {

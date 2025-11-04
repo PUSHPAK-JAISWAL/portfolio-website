@@ -1,63 +1,65 @@
+import { Github, Linkedin, Globe, Award, Code } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, FileText, Award, Code2, Trophy } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const Hero = () => {
-  const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
+  const [profilePhoto, setProfilePhoto] = useState("");
+
+  useEffect(() => {
+    fetch('https://api.github.com/users/PUSHPAK-JAISWAL')
+      .then(res => res.json())
+      .then(data => setProfilePhoto(data.avatar_url))
+      .catch(() => setProfilePhoto(""));
+  }, []);
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 py-20">
-      <div className="max-w-4xl mx-auto text-center space-y-8">
-        <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-          <h1 className="text-5xl md:text-7xl font-bold">
-            Hi, I'm <span className="gradient-text">Pushpak Jaiswal</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground">
-            Full Stack Developer | Problem Solver | Tech Enthusiast
-          </p>
-        </div>
-
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-150">
-          Passionate about building innovative solutions and creating exceptional user experiences.
-          Specialized in modern web technologies and always eager to learn and grow.
+    <section className="py-20 px-4 bg-gradient-to-br from-background via-secondary/20 to-accent/10">
+      <div className="max-w-4xl mx-auto text-center animate-fade-in">
+        <Avatar className="w-32 h-32 mx-auto mb-6 ring-4 ring-primary/20 animate-scale-up">
+          <AvatarImage src={profilePhoto} alt="Pushpak Jaiswal" />
+          <AvatarFallback>PJ</AvatarFallback>
+        </Avatar>
+        <h1 className="text-5xl md:text-7xl font-bold mb-6">
+          Hi, I'm <span className="gradient-text">Pushpak Jaiswal</span>
+        </h1>
+        <p className="text-xl md:text-2xl text-muted-foreground mb-4">
+          Full-Stack Developer & Software Engineer
+        </p>
+        <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
+          Motivated software engineer skilled in full-stack development (Java, Spring Boot, React) with
+          expertise in Python, TensorFlow, and IoT solutions using Arduino.
         </p>
 
-        <div className="flex flex-wrap gap-4 justify-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300">
-          <Button onClick={() => scrollToSection("projects")} size="lg" className="gap-2">
-            <Github className="w-4 h-4" />
-            View Projects
-          </Button>
-          <Button onClick={() => scrollToSection("resume")} variant="outline" size="lg" className="gap-2">
-            <FileText className="w-4 h-4" />
-            Download Resume
-          </Button>
-        </div>
-
-        <div className="flex gap-4 justify-center pt-4 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500">
-          <Button variant="ghost" size="icon" asChild>
-            <a href="https://github.com/PUSHPAK-JAISWAL" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-              <Github className="w-5 h-5" />
+        <div className="flex flex-wrap justify-center gap-3 mt-8">
+          <Button variant="outline" size="sm" asChild>
+            <a href="https://github.com/PUSHPAK-JAISWAL" target="_blank" rel="noopener noreferrer">
+              <Github className="w-4 h-4 mr-2" />
+              GitHub
             </a>
           </Button>
-          <Button variant="ghost" size="icon" asChild>
-            <a href="https://www.linkedin.com/in/pushpak-jaiswal/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <Linkedin className="w-5 h-5" />
+          <Button variant="outline" size="sm" asChild>
+            <a href="https://www.linkedin.com/in/pushpak-jaiswal/" target="_blank" rel="noopener noreferrer">
+              <Linkedin className="w-4 h-4 mr-2" />
+              LinkedIn
             </a>
           </Button>
-          <Button variant="ghost" size="icon" asChild>
-            <a href="https://www.geeksforgeeks.org/user/pushpakmoqg3/" target="_blank" rel="noopener noreferrer" aria-label="GeeksforGeeks">
-              <Award className="w-5 h-5" />
+          <Button variant="outline" size="sm" asChild>
+            <a href="https://www.geeksforgeeks.org/user/pushpakmoqg3/" target="_blank" rel="noopener noreferrer">
+              <Globe className="w-4 h-4 mr-2" />
+              GeeksforGeeks
             </a>
           </Button>
-          <Button variant="ghost" size="icon" asChild>
-            <a href="https://www.hackerrank.com/skills-verification" target="_blank" rel="noopener noreferrer" aria-label="HackerRank">
-              <Trophy className="w-5 h-5" />
+          <Button variant="outline" size="sm" asChild>
+            <a href="https://www.hackerrank.com/skills-verification" target="_blank" rel="noopener noreferrer">
+              <Award className="w-4 h-4 mr-2" />
+              HackerRank
             </a>
           </Button>
-          <Button variant="ghost" size="icon" asChild>
-            <a href="https://leetcode.com/u/pushpakmjaiswal/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
-              <Code2 className="w-5 h-5" />
+          <Button variant="outline" size="sm" asChild>
+            <a href="https://leetcode.com/u/pushpakmjaiswal/" target="_blank" rel="noopener noreferrer">
+              <Code className="w-4 h-4 mr-2" />
+              LeetCode
             </a>
           </Button>
         </div>
