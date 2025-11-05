@@ -4,9 +4,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Mail, Phone, MapPin } from "lucide-react";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
-import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -15,11 +14,9 @@ const Contact = () => {
     subject: "",
     message: "",
   });
-  const [sending, setSending] = useState(false);
   const { toast } = useToast();
-  const formRef = useRef<HTMLFormElement>(null);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!formData.name || !formData.email || !formData.message) {
@@ -31,43 +28,18 @@ const Contact = () => {
       return;
     }
 
-    // Replace these with your EmailJS credentials
-    const serviceId = "YOUR_SERVICE_ID";
-    const templateId = "YOUR_TEMPLATE_ID";
-    const publicKey = "YOUR_PUBLIC_KEY";
+    const subject = formData.subject || "Contact from Portfolio";
+    const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
+    const mailtoLink = `mailto:pushpakmjaiswal@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    window.location.href = mailtoLink;
+    
+    toast({
+      title: "Opening email client",
+      description: "Your default email application will open with the pre-filled message.",
+    });
 
-    setSending(true);
-
-    try {
-      await emailjs.send(
-        serviceId,
-        templateId,
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          subject: formData.subject || "Contact from Portfolio",
-          message: formData.message,
-          to_email: "pushpakmjaiswal@gmail.com",
-        },
-        publicKey
-      );
-
-      toast({
-        title: "Message sent!",
-        description: "Thank you for reaching out. I'll get back to you soon!",
-      });
-
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    } catch (error) {
-      console.error("EmailJS error:", error);
-      toast({
-        title: "Failed to send",
-        description: "Please try again or email me directly at pushpakmjaiswal@gmail.com",
-        variant: "destructive",
-      });
-    } finally {
-      setSending(false);
-    }
+    setFormData({ name: "", email: "", subject: "", message: "" });
   };
 
   return (
@@ -161,8 +133,8 @@ const Contact = () => {
                 />
               </div>
 
-              <Button type="submit" className="w-full" disabled={sending}>
-                {sending ? "Sending..." : "Send Message"}
+              <Button type="submit" className="w-full">
+                Send Message
               </Button>
             </form>
           </Card>
