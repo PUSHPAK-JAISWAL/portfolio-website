@@ -9,74 +9,80 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 220 13% 13%;
+    --foreground: 240 10% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 13% 13%;
+    --card-foreground: 240 10% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 13% 13%;
+    --popover-foreground: 240 10% 10%;
 
-    --primary: 217 91% 60%;
+    --primary: 262 83% 58%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 13% 95%;
-    --secondary-foreground: 220 13% 13%;
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 10% 10%;
 
-    --muted: 220 13% 95%;
-    --muted-foreground: 220 9% 46%;
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
 
-    --accent: 173 80% 45%;
+    --accent: 340 82% 52%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 217 91% 60%;
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 262 83% 58%;
 
     --radius: 0.75rem;
 
-    /* Custom portfolio tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(173 80% 45%));
-    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(220 13% 98%));
-    --shadow-card: 0 4px 20px -2px hsl(217 91% 60% / 0.1);
-    --shadow-hover: 0 8px 30px -4px hsl(217 91% 60% / 0.2);
+    /* Custom portfolio tokens - Vibrant purple to pink gradient theme */
+    --gradient-primary: linear-gradient(135deg, hsl(262 83% 58%), hsl(340 82% 52%));
+    --gradient-secondary: linear-gradient(135deg, hsl(217 91% 60%), hsl(262 83% 58%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(262 83% 98%));
+    --gradient-hero: linear-gradient(135deg, hsl(262 83% 58% / 0.1), hsl(340 82% 52% / 0.1));
+    --shadow-card: 0 4px 20px -2px hsl(262 83% 58% / 0.15);
+    --shadow-hover: 0 12px 40px -4px hsl(262 83% 58% / 0.25);
+    --shadow-glow: 0 0 40px hsl(340 82% 52% / 0.3);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .dark {
-    --background: 220 20% 10%;
+    --background: 240 10% 8%;
     --foreground: 0 0% 98%;
 
-    --card: 220 18% 14%;
+    --card: 240 10% 12%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 220 18% 14%;
+    --popover: 240 10% 12%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 217 91% 60%;
+    --primary: 262 83% 58%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 15% 20%;
+    --secondary: 240 8% 18%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 220 15% 20%;
-    --muted-foreground: 220 9% 60%;
+    --muted: 240 8% 18%;
+    --muted-foreground: 240 5% 65%;
 
-    --accent: 173 80% 45%;
+    --accent: 340 82% 52%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 15% 20%;
-    --input: 220 15% 20%;
-    --ring: 217 91% 60%;
+    --border: 240 8% 18%;
+    --input: 240 8% 18%;
+    --ring: 262 83% 58%;
 
-    --shadow-card: 0 4px 20px -2px hsl(0 0% 0% / 0.3);
-    --shadow-hover: 0 8px 30px -4px hsl(217 91% 60% / 0.3);
+    --gradient-card: linear-gradient(145deg, hsl(240 10% 12%), hsl(262 83% 12%));
+    --gradient-hero: linear-gradient(135deg, hsl(262 83% 20% / 0.3), hsl(340 82% 20% / 0.3));
+    --shadow-card: 0 4px 20px -2px hsl(262 83% 58% / 0.2);
+    --shadow-hover: 0 12px 40px -4px hsl(262 83% 58% / 0.4);
+    --shadow-glow: 0 0 50px hsl(340 82% 52% / 0.4);
   }
 }
 
@@ -101,11 +107,13 @@ All colors MUST be HSL.
   .card-hover {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: var(--shadow-card);
+    border: 1px solid hsl(var(--border));
   }
 
   .card-hover:hover {
     box-shadow: var(--shadow-hover);
     transform: translateY(-8px) scale(1.02);
+    border-color: hsl(var(--primary) / 0.3);
   }
 }
 

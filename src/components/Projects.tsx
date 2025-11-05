@@ -15,6 +15,7 @@ interface Repository {
   forks_count: number;
   language: string;
   topics: string[];
+  updated_at: string;
 }
 
 const Projects = () => {
@@ -30,7 +31,16 @@ const Projects = () => {
         if (!response.ok) throw new Error('Failed to fetch repositories');
         
         const data = await response.json();
-        setRepos(data);
+        
+        // Sort by stars first (descending), then by most recent update
+        const sortedRepos = data.sort((a: Repository, b: Repository) => {
+          if (b.stargazers_count !== a.stargazers_count) {
+            return b.stargazers_count - a.stargazers_count;
+          }
+          return new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime();
+        });
+        
+        setRepos(sortedRepos);
       } catch (error) {
         toast({
           title: "Error fetching projects",
