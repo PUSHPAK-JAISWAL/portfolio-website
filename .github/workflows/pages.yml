@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main   # change if your default branch is not 'main'
+      - main
 
 permissions:
   contents: write
@@ -17,7 +17,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -35,7 +34,6 @@ jobs:
         run: npm run build
 
       - name: Upload artifact for GitHub Pages
-        # Upload the production build for the Pages deploy action; this is the correct Pages uploader
         uses: actions/upload-pages-artifact@v1
         with:
           path: ./dist
