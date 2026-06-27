@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Briefcase } from "lucide-react";
+import { useContent } from "@/lib/content";
 
 interface ExperienceItem {
   title: string;
@@ -9,40 +10,9 @@ interface ExperienceItem {
   description: string[];
 }
 
-const experiences: ExperienceItem[] = [
-  {
-    title: "Development Lead — Tech Support & Contributor",
-    company: "AssetOpsBench (IBM)",
-    location: "Remote",
-    duration: "July 2025 – Present",
-    description: [
-      "Leading technical support efforts and contributing to AssetOpsBench — an IBM project focused on benchmarking and operational tooling",
-      "Coordinating with cross-functional teams to integrate features and improve reliability",
-    ],
-  },
-  {
-    title: "Founder & Manager",
-    company: "techAmigo (Open Source)",
-    location: "Remote",
-    duration: "July 2025 – Present",
-    description: [
-      "Started and currently managing the open-source organization techAmigo",
-      "Launched the organization's first product: npx create-server-startup package to scaffold server starter projects quickly",
-    ],
-  },
-  {
-    title: "Intern",
-    company: "PW Skills",
-    location: "Remote, India",
-    duration: "August 2024 – Present",
-    description: [
-      "Responsible for creating learning projects for full stack and AI/ML courses",
-      "Developing comprehensive project materials to teach in their educational programs",
-    ],
-  },
-];
-
 const Experience = () => {
+  const [experiences] = useContent<ExperienceItem>("experience");
+
   return (
     <section className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
@@ -68,7 +38,7 @@ const Experience = () => {
                     {exp.location} | {exp.duration}
                   </p>
                   <ul className="space-y-2">
-                    {exp.description.map((desc, i) => (
+                    {exp.description?.map((desc, i) => (
                       <li key={i} className="text-sm text-muted-foreground flex gap-2">
                         <span className="text-primary mt-1">•</span>
                         <span>{desc}</span>
