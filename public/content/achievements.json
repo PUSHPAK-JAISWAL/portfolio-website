@@ -1,0 +1,52 @@
+[
+  {
+    "title": "First Place - College C Genius Competition",
+    "description": "Secured first place in the competitive C programming competition",
+    "icon": "trophy",
+    "tags": ["Programming", "Competition"]
+  },
+  {
+    "title": "First Place - Engineers' Day Coding Competition",
+    "description": "Won first place in the Engineers' Day coding competition",
+    "icon": "trophy",
+    "tags": ["Coding", "Competition"]
+  },
+  {
+    "title": "Hackathon Winner",
+    "description": "Achieved podium positions in 2 hackathons, demonstrating innovation and problem-solving skills",
+    "icon": "trophy",
+    "tags": ["Hackathon", "Innovation"]
+  },
+  {
+    "title": "4th Place - Matpo Programming Competition",
+    "description": "Secured 4th position in the Matpo programming competition",
+    "icon": "award",
+    "tags": ["Programming", "Competition"]
+  },
+  {
+    "title": "5-Star Rating on HackerRank",
+    "description": "Earned 5-star ratings in both Java and C programming on HackerRank",
+    "icon": "star",
+    "tags": ["Java", "C", "Problem Solving"],
+    "link": "https://www.hackerrank.com/skills-verification"
+  },
+  {
+    "title": "3-Star GeeksforGeeks & College Rank #1",
+    "description": "Achieved 3-star rating on GeeksforGeeks and secured 1st rank on college leaderboard",
+    "icon": "star",
+    "tags": ["DSA", "Competitive Programming"],
+    "link": "https://www.geeksforgeeks.org/user/pushpakmoqg3/"
+  },
+  {
+    "title": "Vice-Captain - Terra House",
+    "description": "Led Terra House as Vice-Captain at Podar International School (ICSE) in 2019",
+    "icon": "award",
+    "tags": ["Leadership", "Extracurricular"]
+  },
+  {
+    "title": "Sports Captain - Hockey Team",
+    "description": "Captained the Under-14 Hockey team in 2018. Played football, basketball, and hockey at divisional level",
+    "icon": "award",
+    "tags": ["Sports", "Leadership"]
+  }
+]
