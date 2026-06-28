@@ -1,59 +1,44 @@
-import { Code, Database, Wrench, Cpu, LucideIcon } from "lucide-react";
-import { Card } from "@/components/ui/card";
 import { useContent } from "@/lib/content";
 
-type SkillCategory = {
-  title: string;
-  icon: string;
-  skills: string[];
-};
+type SkillCategory = { title: string; icon: string; skills: string[] };
 
-const ICONS: Record<string, LucideIcon> = {
-  code: Code,
-  cpu: Cpu,
-  database: Database,
-  wrench: Wrench,
-};
+const colors = ["text-gruv-orange", "text-gruv-aqua", "text-gruv-yellow", "text-gruv-blue", "text-gruv-purple"];
 
 const Skills = () => {
-  const [skillCategories] = useContent<SkillCategory>("skills");
+  const [cats] = useContent<SkillCategory>("skills");
 
   return (
-    <section className="py-20 px-4">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-12">
-          <span className="gradient-text">Skills & Expertise</span>
-        </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {skillCategories.map((category, index) => {
-            const Icon = ICONS[category.icon] || Code;
-            return (
-              <Card
-                key={category.title + index}
-                className="p-6 card-hover animate-slide-up"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2 rounded-lg bg-primary/10">
-                    <Icon className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-semibold">{category.title}</h3>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {(category.skills || []).map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1 bg-secondary rounded-full text-sm font-medium"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </Card>
-            );
-          })}
+    <section className="animate-fade-in space-y-4">
+      <div className="pane">
+        <div className="pane-title">
+          <span><span className="id">[02]</span> ~/skills.json</span>
+          <span>read-only</span>
         </div>
+        <div className="p-4 text-xs text-muted-foreground">
+          <span className="text-gruv-aqua">pushpak@arch</span> ~ $ <span className="text-foreground">cat skills.json | jq .</span>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {cats.map((c, i) => (
+          <div key={c.title + i} className="pane animate-slide-up" style={{ animationDelay: `${i * 50}ms` }}>
+            <div className="pane-title">
+              <span><span className="id">[{String(i + 1).padStart(2, "0")}]</span> {c.title.toLowerCase().replace(/\s+/g, "_")}</span>
+              <span>{(c.skills || []).length} items</span>
+            </div>
+            <div className="p-4 text-xs">
+              <div className={`${colors[i % colors.length]} font-bold mb-2 uppercase tracking-wider`}>// {c.title}</div>
+              <ul className="space-y-1 text-muted-foreground">
+                {(c.skills || []).map((s, j, arr) => (
+                  <li key={s} className="flex gap-2">
+                    <span className="text-secondary-foreground/40">{j === arr.length - 1 ? "└─" : "├─"}</span>
+                    <span className="text-foreground">{s}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

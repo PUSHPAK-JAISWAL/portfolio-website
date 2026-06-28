@@ -1,45 +1,47 @@
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { Download, FileText } from "lucide-react";
 
 const Resume = () => {
   const handleDownload = () => {
-    const link = document.createElement('a');
-    link.href = '/resume.pdf';
-    link.download = 'Pushpak_Jaiswal_Resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    const a = document.createElement("a");
+    a.href = "/resume.pdf";
+    a.download = "Pushpak_Jaiswal_Resume.pdf";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   };
 
   return (
-    <section id="resume" className="py-20 px-4">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-12">
-          <span className="gradient-text">Resume</span>
-        </h2>
+    <section className="animate-fade-in space-y-4">
+      <div className="pane">
+        <div className="pane-title">
+          <span><span className="id">[08]</span> ~/resume.pdf</span>
+          <span>application/pdf</span>
+        </div>
+        <div className="p-4 text-xs text-muted-foreground">
+          <span className="text-gruv-aqua">pushpak@arch</span> ~ $ <span className="text-foreground">file resume.pdf &amp;&amp; ls -lh resume.pdf</span>
+        </div>
+      </div>
 
-        <Card className="p-8 text-center card-hover">
-          <div className="flex justify-center mb-6">
-            <div className="p-4 rounded-full bg-primary/10">
-              <FileText className="w-12 h-12 text-primary" />
-            </div>
+      <div className="pane">
+        <div className="pane-title">
+          <span><span className="id">[$]</span> download.sh</span>
+          <span>executable</span>
+        </div>
+        <div className="p-6 flex flex-col items-center gap-4 text-center">
+          <FileText className="w-12 h-12 text-primary" />
+          <div className="text-sm text-muted-foreground max-w-md">
+            One pager: experience, education, stack and projects — all the things hiring filters look for.
           </div>
-
-          <h3 className="text-2xl font-semibold mb-4">Download My Resume</h3>
-          <p className="text-muted-foreground mb-8 max-w-md mx-auto">
-            Get a detailed overview of my experience, education, and technical skills.
-          </p>
-
-          <Button onClick={handleDownload} size="lg" className="gap-2">
-            <Download className="w-5 h-5" />
-            Download Resume (PDF)
-          </Button>
-
-          <p className="text-sm text-muted-foreground mt-6">
-            To use this feature, place your resume PDF file in the <code className="px-2 py-1 bg-muted rounded">public</code> folder as <code className="px-2 py-1 bg-muted rounded">resume.pdf</code>
-          </p>
-        </Card>
+          <button
+            onClick={handleDownload}
+            className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 hover:bg-accent transition-colors font-bold"
+          >
+            <Download className="w-4 h-4" /> ./download_resume.sh
+          </button>
+          <div className="text-[10px] text-muted-foreground">
+            file: <span className="text-gruv-aqua">public/resume.pdf</span> · sha: <span className="text-gruv-yellow">a1b2c3d</span>
+          </div>
+        </div>
       </div>
     </section>
   );

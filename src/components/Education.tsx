@@ -1,5 +1,3 @@
-import { Card } from "@/components/ui/card";
-import { GraduationCap } from "lucide-react";
 import { useContent } from "@/lib/content";
 
 interface EducationItem {
@@ -10,36 +8,37 @@ interface EducationItem {
 }
 
 const Education = () => {
-  const [education] = useContent<EducationItem>("education");
+  const [items] = useContent<EducationItem>("education");
 
   return (
-    <section className="py-20 px-4">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-12">
-          <span className="gradient-text">Education</span>
-        </h2>
-
-        <div className="space-y-6">
-          {education.map((edu, index) => (
-            <Card
-              key={index}
-              className="p-6 card-hover animate-slide-in-right"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <div className="flex gap-4">
-                <div className="p-3 rounded-lg bg-accent/10 h-fit">
-                  <GraduationCap className="w-6 h-6 text-accent" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-semibold mb-1">{edu.degree}</h3>
-                  <p className="text-accent font-medium mb-1">{edu.institution}</p>
-                  <p className="text-sm text-muted-foreground">{edu.duration}</p>
-                  {edu.details && <p className="text-sm text-muted-foreground mt-2">{edu.details}</p>}
-                </div>
-              </div>
-            </Card>
-          ))}
+    <section className="animate-fade-in space-y-4">
+      <div className="pane">
+        <div className="pane-title">
+          <span><span className="id">[05]</span> ~/education.md</span>
+          <span>{items.length} entries</span>
         </div>
+        <div className="p-4 text-xs text-muted-foreground">
+          <span className="text-gruv-aqua">pushpak@arch</span> ~ $ <span className="text-foreground">cat education.md</span>
+        </div>
+      </div>
+
+      <div className="space-y-3">
+        {items.map((e, i) => (
+          <div key={i} className="pane animate-slide-in-right" style={{ animationDelay: `${i * 60}ms` }}>
+            <div className="pane-title">
+              <span><span className="id">#{String(i + 1).padStart(2, "0")}</span> {e.institution}</span>
+              <span>{e.duration}</span>
+            </div>
+            <div className="p-4 text-sm space-y-2">
+              <div className="text-primary font-bold"># {e.degree}</div>
+              {e.details && (
+                <p className="text-xs text-muted-foreground leading-relaxed border-l-2 border-border pl-3">
+                  {e.details}
+                </p>
+              )}
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

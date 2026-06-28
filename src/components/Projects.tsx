@@ -1,7 +1,4 @@
 import { useEffect, useState } from "react";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Github, ExternalLink, Star, GitFork } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -18,118 +15,110 @@ interface Repository {
   updated_at: string;
 }
 
+const langColor: Record<string, string> = {
+  JavaScript: "text-gruv-yellow",
+  TypeScript: "text-gruv-blue",
+  Python: "text-gruv-aqua",
+  Java: "text-gruv-orange",
+  HTML: "text-gruv-red",
+  CSS: "text-gruv-purple",
+};
+
 const Projects = () => {
   const [repos, setRepos] = useState<Repository[]>([]);
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
 
   useEffect(() => {
-    const fetchRepos = async () => {
+    const run = async () => {
       try {
-        const response = await fetch('https://api.github.com/users/PUSHPAK-JAISWAL/repos?sort=updated&per_page=100');
-        
-        if (!response.ok) throw new Error('Failed to fetch repositories');
-        
-        const data = await response.json();
-        
-        // Sort by stars first (descending), then by most recent update
-        const sortedRepos = data.sort((a: Repository, b: Repository) => {
-          if (b.stargazers_count !== a.stargazers_count) {
-            return b.stargazers_count - a.stargazers_count;
-          }
-          return new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime();
-        });
-        
-        setRepos(sortedRepos);
-      } catch (error) {
-        toast({
-          title: "Error fetching projects",
-          description: "Unable to load GitHub repositories",
-          variant: "destructive",
-        });
+        const r = await fetch("https://api.github.com/users/PUSHPAK-JAISWAL/repos?sort=updated&per_page=100");
+        if (!r.ok) throw new Error("fetch failed");
+        const data: Repository[] = await r.json();
+        data.sort((a, b) =>
+          b.stargazers_count !== a.stargazers_count
+            ? b.stargazers_count - a.stargazers_count
+            : new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime()
+        );
+        setRepos(data);
+      } catch {
+        toast({ title: "Error fetching projects", description: "Unable to load GitHub repos", variant: "destructive" });
       } finally {
         setLoading(false);
       }
     };
-
-    fetchRepos();
+    run();
   }, [toast]);
 
   return (
-    <section id="projects" className="py-20 px-4 bg-secondary/30">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-12">
-          <span className="gradient-text">Featured Projects</span>
-        </h2>
-
-        {loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[...Array(6)].map((_, i) => (
-              <Card key={i} className="p-6 h-64 animate-pulse bg-muted" />
-            ))}
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {repos.map((repo) => (
-              <Card key={repo.id} className="p-6 card-hover flex flex-col">
-                <div className="flex-1 space-y-4">
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2 line-clamp-1">{repo.name}</h3>
-                    <p className="text-muted-foreground text-sm line-clamp-3">
-                      {repo.description || "No description available"}
-                    </p>
-                  </div>
-
-                  <div className="flex flex-wrap gap-2">
-                    {repo.language && (
-                      <Badge variant="secondary">{repo.language}</Badge>
-                    )}
-                    {repo.topics?.slice(0, 2).map((topic) => (
-                      <Badge key={topic} variant="outline">{topic}</Badge>
-                    ))}
-                  </div>
-
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                    <span className="flex items-center gap-1">
-                      <Star className="w-4 h-4" />
-                      {repo.stargazers_count}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <GitFork className="w-4 h-4" />
-                      {repo.forks_count}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="flex gap-2 pt-4 mt-4 border-t">
-                  <Button variant="outline" size="sm" asChild className="flex-1">
-                    <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
-                      <Github className="w-4 h-4 mr-2" />
-                      Code
-                    </a>
-                  </Button>
-                  {repo.homepage && (
-                    <Button size="sm" asChild className="flex-1">
-                      <a href={repo.homepage} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="w-4 h-4 mr-2" />
-                        Demo
-                      </a>
-                    </Button>
-                  )}
-                </div>
-              </Card>
-            ))}
-          </div>
-        )}
-
-        <div className="text-center mt-8">
-          <Button variant="outline" asChild>
-            <a href="https://github.com/PUSHPAK-JAISWAL" target="_blank" rel="noopener noreferrer">
-              View All Projects on GitHub
-            </a>
-          </Button>
+    <section className="animate-fade-in space-y-4">
+      <div className="pane">
+        <div className="pane-title">
+          <span><span className="id">[03]</span> ~/projects.rs</span>
+          <span>{loading ? "loading..." : `${repos.length} repos`}</span>
+        </div>
+        <div className="p-4 text-xs text-muted-foreground">
+          <span className="text-gruv-aqua">pushpak@arch</span> ~ ${" "}
+          <span className="text-foreground">gh repo list --sort stars --limit 100</span>
         </div>
       </div>
+
+      {loading ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div key={i} className="pane h-44 animate-pulse" />
+          ))}
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {repos.map((repo, i) => (
+            <div key={repo.id} className="pane flex flex-col animate-slide-up" style={{ animationDelay: `${Math.min(i, 12) * 30}ms` }}>
+              <div className="pane-title">
+                <span><span className="id">#{String(i + 1).padStart(2, "0")}</span> {repo.name}</span>
+                <span className="flex items-center gap-2 text-[10px]">
+                  <Star className="w-3 h-3" /> {repo.stargazers_count}
+                  <GitFork className="w-3 h-3 ml-1" /> {repo.forks_count}
+                </span>
+              </div>
+              <div className="p-3 flex-1 flex flex-col gap-2 text-xs">
+                <p className="text-muted-foreground line-clamp-3 min-h-[3rem]">
+                  {repo.description || "// no description"}
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {repo.language && (
+                    <span className={`chip ${langColor[repo.language] ?? "text-gruv-aqua"} border-current/40`}>
+                      ● {repo.language}
+                    </span>
+                  )}
+                  {repo.topics?.slice(0, 2).map((t) => (
+                    <span key={t} className="chip">#{t}</span>
+                  ))}
+                </div>
+                <div className="flex gap-2 mt-auto pt-2 border-t border-border">
+                  <a
+                    href={repo.html_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-1.5 border border-border px-2 py-1 hover:border-primary hover:text-primary transition-colors"
+                  >
+                    <Github className="w-3 h-3" /> code
+                  </a>
+                  {repo.homepage && (
+                    <a
+                      href={repo.homepage}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 flex items-center justify-center gap-1.5 bg-primary text-primary-foreground px-2 py-1 hover:bg-accent transition-colors"
+                    >
+                      <ExternalLink className="w-3 h-3" /> live
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </section>
   );
 };
