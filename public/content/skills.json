@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Languages",
+    "icon": "code",
+    "skills": ["Java", "Python", "JavaScript", "HTML", "CSS"]
+  },
+  {
+    "title": "Frameworks & Libraries",
+    "icon": "cpu",
+    "skills": ["Spring Boot", "Spring", "Hibernate", "React.js", "TensorFlow"]
+  },
+  {
+    "title": "Databases & APIs",
+    "icon": "database",
+    "skills": ["MySQL", "REST APIs", "WebSockets", "JSON"]
+  },
+  {
+    "title": "Tools & Technologies",
+    "icon": "wrench",
+    "skills": ["Git", "Arduino (IoT)", "Ollama", "Agentic AI"]
+  }
+]
