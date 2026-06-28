@@ -13,6 +13,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+        sans: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -47,21 +51,25 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
+        gruv: {
+          bg: "#1d2021",
+          bg1: "#282828",
+          bg2: "#3c3836",
+          fg: "#ebdbb2",
+          dim: "#a89984",
+          orange: "#fe8019",
+          yellow: "#fabd2f",
+          aqua: "#8ec07c",
+          blue: "#83a598",
+          purple: "#d3869b",
+          red: "#fb4934",
+          green: "#b8bb26",
         },
       },
       borderRadius: {
         lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        md: "calc(var(--radius))",
+        sm: "0",
       },
       keyframes: {
         "accordion-down": {

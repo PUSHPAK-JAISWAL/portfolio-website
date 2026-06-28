@@ -1,7 +1,4 @@
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Award, ExternalLink } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ExternalLink } from "lucide-react";
 import { useContent } from "@/lib/content";
 
 interface Certification {
@@ -13,50 +10,45 @@ interface Certification {
 }
 
 const Certifications = () => {
-  const [certifications] = useContent<Certification>("certifications");
+  const [items] = useContent<Certification>("certifications");
 
   return (
-    <section className="py-20 px-4">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-12">
-          <span className="gradient-text">Certifications</span>
-        </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {certifications.map((cert, index) => (
-            <Card
-              key={index}
-              className="p-6 card-hover flex flex-col animate-scale-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <div className="flex items-start gap-3 mb-4">
-                <div className="p-2 rounded-lg bg-accent/10">
-                  <Award className="w-5 h-5 text-accent" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-semibold mb-1 line-clamp-2">{cert.name}</h3>
-                  <p className="text-sm text-muted-foreground">{cert.issuer}</p>
-                  {cert.date && <p className="text-xs text-muted-foreground mt-1">{cert.date}</p>}
-                </div>
-              </div>
-
-              {cert.count && (
-                <Badge variant="secondary" className="mb-4 w-fit">
-                  {cert.count} {cert.count === 1 ? "Certificate" : "Certificates"}
-                </Badge>
-              )}
-
-              {cert.url && (
-                <Button variant="outline" size="sm" asChild className="mt-auto">
-                  <a href={cert.url} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    View
-                  </a>
-                </Button>
-              )}
-            </Card>
-          ))}
+    <section className="animate-fade-in space-y-4">
+      <div className="pane">
+        <div className="pane-title">
+          <span><span className="id">[06]</span> ~/certifications.cfg</span>
+          <span>{items.length} verified</span>
         </div>
+        <div className="p-4 text-xs text-muted-foreground">
+          <span className="text-gruv-aqua">pushpak@arch</span> ~ $ <span className="text-foreground">cat /etc/certs/*.cfg</span>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {items.map((c, i) => (
+          <div key={i} className="pane flex flex-col animate-scale-up" style={{ animationDelay: `${i * 40}ms` }}>
+            <div className="pane-title">
+              <span><span className="id">#{String(i + 1).padStart(2, "0")}</span> {c.issuer}</span>
+              {c.date && <span>{c.date}</span>}
+            </div>
+            <div className="p-3 flex-1 flex flex-col gap-2 text-xs">
+              <div className="text-foreground font-medium line-clamp-2">{c.name}</div>
+              {c.count != null && (
+                <div className="text-gruv-yellow">[ × {c.count} {c.count === 1 ? "certificate" : "certificates"} ]</div>
+              )}
+              {c.url && (
+                <a
+                  href={c.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-auto inline-flex items-center justify-center gap-1.5 border border-border px-2 py-1 hover:border-primary hover:text-primary transition-colors"
+                >
+                  <ExternalLink className="w-3 h-3" /> verify
+                </a>
+              )}
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
