@@ -68,6 +68,15 @@ const SCHEMAS: Record<ContentKey, { label: string; fields: Field[]; newItem: () 
     ],
     newItem: () => ({ degree: "", institution: "", duration: "" }),
   },
+  skills: {
+    label: "Skills",
+    fields: [
+      { name: "title", label: "Category Title" },
+      { name: "icon", label: "Icon", type: "select", options: ["code", "cpu", "database", "wrench"] },
+      { name: "skills", label: "Skills (comma separated)", type: "list" },
+    ],
+    newItem: () => ({ title: "", icon: "code", skills: [] }),
+  },
 };
 
 function Editor({ contentKey }: { contentKey: ContentKey }) {

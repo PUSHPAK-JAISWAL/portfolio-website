@@ -1,30 +1,23 @@
-import { Code, Database, Wrench, Cpu } from "lucide-react";
+import { Code, Database, Wrench, Cpu, LucideIcon } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { useContent } from "@/lib/content";
 
-const skillCategories = [
-  {
-    title: "Languages",
-    icon: Code,
-    skills: ["Java", "Python", "JavaScript", "HTML", "CSS"],
-  },
-  {
-    title: "Frameworks & Libraries",
-    icon: Cpu,
-    skills: ["Spring Boot", "Spring", "Hibernate", "React.js", "TensorFlow"],
-  },
-  {
-    title: "Databases & APIs",
-    icon: Database,
-    skills: ["MySQL", "REST APIs", "WebSockets", "JSON"],
-  },
-  {
-    title: "Tools & Technologies",
-    icon: Wrench,
-    skills: ["Git", "Arduino (IoT)", "Ollama", "Agentic AI"],
-  },
-];
+type SkillCategory = {
+  title: string;
+  icon: string;
+  skills: string[];
+};
+
+const ICONS: Record<string, LucideIcon> = {
+  code: Code,
+  cpu: Cpu,
+  database: Database,
+  wrench: Wrench,
+};
 
 const Skills = () => {
+  const [skillCategories] = useContent<SkillCategory>("skills");
+
   return (
     <section className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
@@ -34,10 +27,10 @@ const Skills = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {skillCategories.map((category, index) => {
-            const Icon = category.icon;
+            const Icon = ICONS[category.icon] || Code;
             return (
               <Card
-                key={category.title}
+                key={category.title + index}
                 className="p-6 card-hover animate-slide-up"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
@@ -48,7 +41,7 @@ const Skills = () => {
                   <h3 className="text-xl font-semibold">{category.title}</h3>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill) => (
+                  {(category.skills || []).map((skill) => (
                     <span
                       key={skill}
                       className="px-3 py-1 bg-secondary rounded-full text-sm font-medium"
