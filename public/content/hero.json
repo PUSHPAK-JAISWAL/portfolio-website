@@ -1,0 +1,14 @@
+[
+  {
+    "firstName": "Pushpak",
+    "lastName": "Jaiswal",
+    "tagline": "Full-Stack Developer / Software Engineer",
+    "bio": "Motivated engineer building full-stack systems with Java, Spring Boot, React, Python & TensorFlow. IoT tinkerer with Arduino. Lives in the terminal.",
+    "host": "pushpak.dev",
+    "os": "Arch Linux x86_64",
+    "shell": "zsh 5.9",
+    "wm": "i3-gaps",
+    "theme": "gruvbox-dark",
+    "status": "available"
+  }
+]
