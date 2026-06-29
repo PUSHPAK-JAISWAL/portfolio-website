@@ -77,6 +77,22 @@ const SCHEMAS: Record<ContentKey, { label: string; fields: Field[]; newItem: () 
     ],
     newItem: () => ({ title: "", icon: "code", skills: [] }),
   },
+  hero: {
+    label: "Hero",
+    fields: [
+      { name: "firstName", label: "First Name" },
+      { name: "lastName", label: "Last Name" },
+      { name: "tagline", label: "Tagline / Role" },
+      { name: "bio", label: "Short Bio", type: "textarea" },
+      { name: "host", label: "Host" },
+      { name: "os", label: "OS" },
+      { name: "shell", label: "Shell" },
+      { name: "wm", label: "Window Manager" },
+      { name: "theme", label: "Theme" },
+      { name: "status", label: "Status" },
+    ],
+    newItem: () => ({ firstName: "", lastName: "", tagline: "", bio: "" }),
+  },
 };
 
 function Editor({ contentKey }: { contentKey: ContentKey }) {
@@ -268,7 +284,7 @@ const Admin = () => {
             <h1 className="text-2xl font-bold">Admin Login</h1>
           </div>
           <p className="text-sm text-muted-foreground">
-            Default password: <code className="px-1 bg-muted rounded">{DEFAULT_PASSWORD}</code> — change it after logging in.
+            Enter your admin password to continue.
           </p>
           <Input
             type="password"
