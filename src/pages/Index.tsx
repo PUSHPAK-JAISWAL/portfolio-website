@@ -156,6 +156,14 @@ const Index = () => {
             </div>
             <div className="hidden sm:flex items-center ml-auto px-3 text-[10px] text-muted-foreground gap-3">
               <span><span className="key mr-1">↑↓</span> navigate</span>
+              <button
+                onClick={() => setTermOpen((o) => !o)}
+                className="inline-flex items-center gap-1 hover:text-primary transition-colors"
+                aria-label="Toggle terminal"
+              >
+                <TerminalSquare className="w-3 h-3" />
+                <span className="key">`</span> terminal
+              </button>
               <span><span className="key mr-1">/admin</span> edit</span>
             </div>
           </div>
