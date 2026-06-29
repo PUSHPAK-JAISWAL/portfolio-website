@@ -212,6 +212,13 @@ const Index = () => {
           <Footer />
         </main>
       </div>
+      <Terminal
+        open={termOpen}
+        onClose={() => setTermOpen(false)}
+        files={files}
+        active={active}
+        onNavigate={(k) => setActive(k as SectionKey)}
+      />
     </div>
   );
 };
