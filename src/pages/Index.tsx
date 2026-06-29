@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Menu, X, TerminalSquare } from "lucide-react";
 import Hero from "@/components/Hero";
 import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
@@ -10,6 +10,7 @@ import Certifications from "@/components/Certifications";
 import Achievements from "@/components/Achievements";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import Terminal from "@/components/Terminal";
 
 type SectionKey =
   | "hero"
@@ -49,8 +50,22 @@ const renderers: Record<SectionKey, JSX.Element> = {
 const Index = () => {
   const [active, setActive] = useState<SectionKey>("hero");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [termOpen, setTermOpen] = useState(false);
   const file = files.find((f) => f.key === active)!;
   const activeIdx = files.findIndex((f) => f.key === active);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      const tag = (e.target as HTMLElement)?.tagName;
+      const typing = tag === "INPUT" || tag === "TEXTAREA" || (e.target as HTMLElement)?.isContentEditable;
+      if (!typing && (e.key === "`" || (e.ctrlKey && e.key === "`"))) {
+        e.preventDefault();
+        setTermOpen((o) => !o);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground font-mono text-sm">
