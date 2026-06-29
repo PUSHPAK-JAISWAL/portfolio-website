@@ -138,6 +138,15 @@
   margin-left: 2px;
   animation: blink 1s steps(1) infinite;
 }
+.caret-thin {
+  display: inline-block;
+  width: 0.5em;
+  height: 0.9em;
+  background: hsl(var(--muted-foreground));
+  vertical-align: text-bottom;
+  margin-left: 1px;
+  animation: blink 1s steps(1) infinite;
+}
 
 @keyframes fade-in {
   from { opacity: 0; transform: translateY(8px); }
