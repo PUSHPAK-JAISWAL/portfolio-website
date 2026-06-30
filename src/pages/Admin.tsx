@@ -77,6 +77,15 @@ const SCHEMAS: Record<ContentKey, { label: string; fields: Field[]; newItem: () 
     ],
     newItem: () => ({ title: "", icon: "code", skills: [] }),
   },
+  boot: {
+    label: "Boot Loader",
+    fields: [
+      { name: "title", label: "TTY title line" },
+      { name: "subtitle", label: "Subtitle (progress bar label)" },
+      { name: "messages", label: "Boot messages (one per line, format: color|message — colors: aqua, yellow, red, orange, blue, purple, primary)", type: "list", placeholder: "aqua|Started Network Manager." },
+    ],
+    newItem: () => ({ title: "", subtitle: "", messages: [] }),
+  },
   hero: {
     label: "Hero",
     fields: [
@@ -109,11 +118,13 @@ function Editor({ contentKey }: { contentKey: ContentKey }) {
     saveContent(contentKey, next);
   };
 
+  const isMultiline = (f: Field) => f.type === "list" && (f.name === "description" || f.name === "messages");
+
   const updateField = (idx: number, field: Field, value: any) => {
     const next = [...items];
     let v: any = value;
     if (field.type === "list") {
-      v = field.name === "description"
+      v = isMultiline(field)
         ? value.split("\n").map((s: string) => s.trim()).filter(Boolean)
         : value.split(",").map((s: string) => s.trim()).filter(Boolean);
     } else if (field.type === "number") {
@@ -195,10 +206,10 @@ function Editor({ contentKey }: { contentKey: ContentKey }) {
           <div className="flex items-center justify-between">
             <div className="text-sm font-semibold text-muted-foreground">#{idx + 1}</div>
             <div className="flex gap-1">
-              <Button size="sm" variant="ghost" onClick={() => moveItem(idx, -1)}>↑</Button>
-              <Button size="sm" variant="ghost" onClick={() => moveItem(idx, 1)}>↓</Button>
-              <Button size="sm" variant="ghost" onClick={() => removeItem(idx)}>
-                <Trash2 className="w-4 h-4 text-destructive" />
+              <Button size="sm" variant="ghost" aria-label="Move item up" onClick={() => moveItem(idx, -1)}>↑</Button>
+              <Button size="sm" variant="ghost" aria-label="Move item down" onClick={() => moveItem(idx, 1)}>↓</Button>
+              <Button size="sm" variant="ghost" aria-label="Delete item" onClick={() => removeItem(idx)}>
+                <Trash2 className="w-4 h-4 text-destructive" aria-hidden="true" />
               </Button>
             </div>
           </div>
@@ -208,19 +219,19 @@ function Editor({ contentKey }: { contentKey: ContentKey }) {
             const stringValue =
               field.type === "list"
                 ? Array.isArray(raw)
-                  ? (field.name === "description" ? raw.join("\n") : raw.join(", "))
+                  ? (isMultiline(field) ? raw.join("\n") : raw.join(", "))
                   : ""
                 : raw ?? "";
 
             return (
               <div key={field.name} className="space-y-1">
                 <Label className="text-xs">{field.label}</Label>
-                {field.type === "textarea" || (field.type === "list" && field.name === "description") ? (
+                {field.type === "textarea" || (field.type === "list" && isMultiline(field)) ? (
                   <Textarea
                     value={stringValue}
                     onChange={(e) => updateField(idx, field, e.target.value)}
                     placeholder={field.placeholder}
-                    rows={3}
+                    rows={field.name === "messages" ? 10 : 3}
                   />
                 ) : field.type === "select" ? (
                   <Select value={stringValue || field.options?.[0]} onValueChange={(v) => updateField(idx, field, v)}>

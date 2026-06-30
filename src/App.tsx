@@ -3,29 +3,17 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Index from "./pages/Index";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 import BootLoader from "./components/BootLoader";
 
 const queryClient = new QueryClient();
-const BOOTED_KEY = "portfolio_booted";
 
 const App = () => {
-  const [booting, setBooting] = useState(() => {
-    try {
-      return sessionStorage.getItem(BOOTED_KEY) !== "1";
-    } catch {
-      return true;
-    }
-  });
-
-  useEffect(() => {
-    if (!booting) {
-      try { sessionStorage.setItem(BOOTED_KEY, "1"); } catch {}
-    }
-  }, [booting]);
+  // Persistent: boot sequence plays on every page load.
+  const [booting, setBooting] = useState(true);
 
   return (
     <QueryClientProvider client={queryClient}>
