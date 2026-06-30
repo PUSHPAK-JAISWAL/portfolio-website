@@ -77,6 +77,15 @@ const SCHEMAS: Record<ContentKey, { label: string; fields: Field[]; newItem: () 
     ],
     newItem: () => ({ title: "", icon: "code", skills: [] }),
   },
+  boot: {
+    label: "Boot Loader",
+    fields: [
+      { name: "title", label: "TTY title line" },
+      { name: "subtitle", label: "Subtitle (progress bar label)" },
+      { name: "messages", label: "Boot messages (one per line, format: color|message — colors: aqua, yellow, red, orange, blue, purple, primary)", type: "list", placeholder: "aqua|Started Network Manager." },
+    ],
+    newItem: () => ({ title: "", subtitle: "", messages: [] }),
+  },
   hero: {
     label: "Hero",
     fields: [

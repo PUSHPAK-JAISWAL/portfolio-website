@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export type ContentKey = "achievements" | "certifications" | "experience" | "education" | "skills" | "hero";
+export type ContentKey = "achievements" | "certifications" | "experience" | "education" | "skills" | "hero" | "boot";
 
 const lsKey = (key: ContentKey) => `portfolio_content_${key}`;
 
