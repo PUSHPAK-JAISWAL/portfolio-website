@@ -118,11 +118,13 @@ function Editor({ contentKey }: { contentKey: ContentKey }) {
     saveContent(contentKey, next);
   };
 
+  const isMultiline = (f: Field) => f.type === "list" && (f.name === "description" || f.name === "messages");
+
   const updateField = (idx: number, field: Field, value: any) => {
     const next = [...items];
     let v: any = value;
     if (field.type === "list") {
-      v = field.name === "description"
+      v = isMultiline(field)
         ? value.split("\n").map((s: string) => s.trim()).filter(Boolean)
         : value.split(",").map((s: string) => s.trim()).filter(Boolean);
     } else if (field.type === "number") {
@@ -217,19 +219,19 @@ function Editor({ contentKey }: { contentKey: ContentKey }) {
             const stringValue =
               field.type === "list"
                 ? Array.isArray(raw)
-                  ? (field.name === "description" ? raw.join("\n") : raw.join(", "))
+                  ? (isMultiline(field) ? raw.join("\n") : raw.join(", "))
                   : ""
                 : raw ?? "";
 
             return (
               <div key={field.name} className="space-y-1">
                 <Label className="text-xs">{field.label}</Label>
-                {field.type === "textarea" || (field.type === "list" && field.name === "description") ? (
+                {field.type === "textarea" || (field.type === "list" && isMultiline(field)) ? (
                   <Textarea
                     value={stringValue}
                     onChange={(e) => updateField(idx, field, e.target.value)}
                     placeholder={field.placeholder}
-                    rows={3}
+                    rows={field.name === "messages" ? 10 : 3}
                   />
                 ) : field.type === "select" ? (
                   <Select value={stringValue || field.options?.[0]} onValueChange={(v) => updateField(idx, field, v)}>
