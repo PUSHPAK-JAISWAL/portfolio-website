@@ -64,13 +64,24 @@ const Projects = () => {
       </div>
 
       {loading ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" aria-busy="true" aria-live="polite">
           {Array.from({ length: 6 }).map((_, i) => (
-            <div key={i} className="pane h-44 animate-pulse" />
+            <div key={i} className="pane">
+              <div className="pane-title"><span>[--] loading…</span><span>…</span></div>
+              <div className="p-3 space-y-2">
+                <div className="h-3 w-3/4 bg-secondary animate-pulse" />
+                <div className="h-3 w-1/2 bg-secondary animate-pulse" />
+                <div className="h-3 w-2/3 bg-secondary animate-pulse" />
+                <div className="flex gap-2 pt-2">
+                  <div className="h-7 flex-1 bg-secondary animate-pulse" />
+                  <div className="h-7 flex-1 bg-secondary animate-pulse" />
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {repos.map((repo, i) => (
             <div key={repo.id} className="pane flex flex-col animate-slide-up" style={{ animationDelay: `${Math.min(i, 12) * 30}ms` }}>
               <div className="pane-title">
