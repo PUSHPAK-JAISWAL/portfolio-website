@@ -141,42 +141,51 @@ const Index = () => {
           {/* Tab bar */}
           <div className="flex items-stretch bg-card border-b border-border h-9 shrink-0 overflow-x-auto">
             <button
-              className="md:hidden px-3 border-r border-border text-muted-foreground hover:text-primary"
+              className="md:hidden px-3 border-r border-border text-muted-foreground hover:text-primary focus-visible:text-primary focus-visible:outline-none shrink-0"
               onClick={() => setSidebarOpen(true)}
               aria-label="Open sidebar"
             >
-              <Menu className="w-4 h-4" />
+              <Menu className="w-4 h-4" aria-hidden="true" />
             </button>
-            <div className="flex items-center px-3 bg-background border-r border-border border-t-2 border-t-primary text-xs">
-              <span className={`mr-2 ${file.color}`}>#</span>
+            <div className="flex items-center px-3 bg-background border-r border-border border-t-2 border-t-primary text-xs shrink-0">
+              <span className={`mr-2 ${file.color}`} aria-hidden="true">#</span>
               <span className="font-medium">
                 {file.name}.{file.ext}
               </span>
-              <span className="ml-3 text-muted-foreground hover:text-destructive cursor-pointer">×</span>
+              <span className="ml-3 text-muted-foreground" aria-hidden="true">×</span>
             </div>
-            <div className="hidden sm:flex items-center ml-auto px-3 text-[10px] text-muted-foreground gap-3">
+            <div className="hidden sm:flex items-center ml-auto px-3 text-[10px] text-muted-foreground gap-3 shrink-0">
               <span><span className="key mr-1">↑↓</span> navigate</span>
               <button
                 onClick={() => setTermOpen((o) => !o)}
-                className="inline-flex items-center gap-1 hover:text-primary transition-colors"
+                className="inline-flex items-center gap-1 hover:text-primary focus-visible:text-primary focus-visible:outline-none transition-colors"
                 aria-label="Toggle terminal"
+                aria-pressed={termOpen}
               >
-                <TerminalSquare className="w-3 h-3" />
+                <TerminalSquare className="w-3 h-3" aria-hidden="true" />
                 <span className="key">`</span> terminal
               </button>
               <span><span className="key mr-1">/admin</span> edit</span>
             </div>
+            <button
+              onClick={() => setTermOpen((o) => !o)}
+              className="sm:hidden ml-auto px-3 border-l border-border text-muted-foreground hover:text-primary focus-visible:text-primary focus-visible:outline-none shrink-0"
+              aria-label="Toggle terminal"
+              aria-pressed={termOpen}
+            >
+              <TerminalSquare className="w-4 h-4" aria-hidden="true" />
+            </button>
           </div>
 
           {/* Breadcrumb */}
-          <div className="px-3 py-1.5 bg-background border-b border-border text-[11px] text-muted-foreground flex items-center justify-between">
-            <div>
-              ~ <span className="mx-1">›</span> portfolio <span className="mx-1">›</span>{" "}
+          <div className="px-3 py-1.5 bg-background border-b border-border text-[11px] text-muted-foreground flex items-center justify-between gap-2">
+            <div className="truncate">
+              ~ <span className="mx-1" aria-hidden="true">›</span> portfolio <span className="mx-1" aria-hidden="true">›</span>{" "}
               <span className="text-foreground">
                 {file.name}.{file.ext}
               </span>
             </div>
-            <div className="hidden md:flex gap-3 text-[10px]">
+            <div className="hidden md:flex gap-3 text-[10px] shrink-0">
               <span>Ln {String(activeIdx + 1).padStart(2, "0")}</span>
               <span>Col 01</span>
               <span className="text-gruv-aqua">UTF-8</span>
@@ -185,15 +194,15 @@ const Index = () => {
 
           {/* Content */}
           <div key={active} className="flex-1 overflow-y-auto bg-background relative animate-fade-in">
-            {/* Line-number gutter */}
-            <div className="absolute left-0 top-0 bottom-0 w-10 border-r border-border bg-background text-muted-foreground/40 text-[10px] flex flex-col items-end pr-1 pt-4 select-none pointer-events-none">
+            {/* Line-number gutter (desktop only — saves horizontal space on mobile) */}
+            <div className="hidden md:flex absolute left-0 top-0 bottom-0 w-10 border-r border-border bg-background text-muted-foreground/40 text-[10px] flex-col items-end pr-1 pt-4 select-none pointer-events-none" aria-hidden="true">
               {Array.from({ length: 80 }).map((_, i) => (
                 <span key={i} className="leading-5">
                   {String(i + 1).padStart(2, "0")}
                 </span>
               ))}
             </div>
-            <div className="pl-12 pr-3 py-4 md:pr-6">{renderers[active]}</div>
+            <div className="px-3 py-4 md:pl-12 md:pr-6">{renderers[active]}</div>
           </div>
 
           {/* Status line (polybar) */}

@@ -206,10 +206,10 @@ function Editor({ contentKey }: { contentKey: ContentKey }) {
           <div className="flex items-center justify-between">
             <div className="text-sm font-semibold text-muted-foreground">#{idx + 1}</div>
             <div className="flex gap-1">
-              <Button size="sm" variant="ghost" onClick={() => moveItem(idx, -1)}>↑</Button>
-              <Button size="sm" variant="ghost" onClick={() => moveItem(idx, 1)}>↓</Button>
-              <Button size="sm" variant="ghost" onClick={() => removeItem(idx)}>
-                <Trash2 className="w-4 h-4 text-destructive" />
+              <Button size="sm" variant="ghost" aria-label="Move item up" onClick={() => moveItem(idx, -1)}>↑</Button>
+              <Button size="sm" variant="ghost" aria-label="Move item down" onClick={() => moveItem(idx, 1)}>↓</Button>
+              <Button size="sm" variant="ghost" aria-label="Delete item" onClick={() => removeItem(idx)}>
+                <Trash2 className="w-4 h-4 text-destructive" aria-hidden="true" />
               </Button>
             </div>
           </div>
