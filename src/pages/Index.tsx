@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X, TerminalSquare } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import Hero from "@/components/Hero";
 import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
@@ -53,6 +54,7 @@ const Index = () => {
   const [termOpen, setTermOpen] = useState(false);
   const file = files.find((f) => f.key === active)!;
   const activeIdx = files.findIndex((f) => f.key === active);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -227,6 +229,7 @@ const Index = () => {
         files={files}
         active={active}
         onNavigate={(k) => setActive(k as SectionKey)}
+        navigate={navigate}
       />
     </div>
   );
