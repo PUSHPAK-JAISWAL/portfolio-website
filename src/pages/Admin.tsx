@@ -232,12 +232,15 @@ function Editor({ contentKey }: { contentKey: ContentKey }) {
 
           {schema.fields.map((field) => {
             const raw = item[field.name];
-            const stringValue =
+            const draftKey = `${idx}:${field.name}`;
+            const joined =
               field.type === "list"
                 ? Array.isArray(raw)
                   ? (isMultiline(field) ? raw.join("\n") : raw.join(", "))
                   : ""
                 : raw ?? "";
+            const stringValue =
+              field.type === "list" && draftKey in drafts ? drafts[draftKey] : joined;
 
             return (
               <div key={field.name} className="space-y-1">
@@ -246,6 +249,7 @@ function Editor({ contentKey }: { contentKey: ContentKey }) {
                   <Textarea
                     value={stringValue}
                     onChange={(e) => updateField(idx, field, e.target.value)}
+                    onBlur={() => field.type === "list" && clearDraft(idx, field)}
                     placeholder={field.placeholder}
                     rows={field.name === "messages" ? 10 : 3}
                   />
@@ -261,6 +265,7 @@ function Editor({ contentKey }: { contentKey: ContentKey }) {
                     type={field.type === "number" ? "number" : "text"}
                     value={stringValue}
                     onChange={(e) => updateField(idx, field, e.target.value)}
+                    onBlur={() => field.type === "list" && clearDraft(idx, field)}
                     placeholder={field.placeholder}
                   />
                 )}
