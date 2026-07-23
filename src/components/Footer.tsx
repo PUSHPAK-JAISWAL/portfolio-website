@@ -4,7 +4,7 @@ const links = [
   { href: "https://github.com/PUSHPAK-JAISWAL", icon: Github, label: "GitHub" },
   { href: "https://www.linkedin.com/in/pushpak-jaiswal/", icon: Linkedin, label: "LinkedIn" },
   { href: "https://www.geeksforgeeks.org/user/pushpakmoqg3/", icon: Award, label: "GeeksforGeeks" },
-  { href: "https://www.hackerrank.com/skills-verification", icon: Trophy, label: "HackerRank" },
+  { href: "https://www.hackerrank.com/profile/pushpakmjaiswal", icon: Trophy, label: "HackerRank" },
   { href: "https://leetcode.com/u/pushpakmjaiswal/", icon: Code2, label: "LeetCode" },
 ];
 

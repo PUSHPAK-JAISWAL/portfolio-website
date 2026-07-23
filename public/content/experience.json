@@ -1,32 +1,38 @@
 [
   {
-    "title": "Development Lead — Tech Support & Contributor",
-    "company": "AssetOpsBench (IBM)",
+    "title": "Contributor & Maintainer",
+    "company": "IBM - AssetOpsBench (Open Source)",
     "location": "Remote",
-    "duration": "July 2025 – Present",
+    "duration": "2025 – Present",
     "description": [
-      "Leading technical support efforts and contributing to AssetOpsBench — an IBM project focused on benchmarking and operational tooling",
-      "Coordinating with cross-functional teams to integrate features and improve reliability"
+      "Maintaining high-scale open-source benchmarking tools focused on Facility Management and IoT domain scenarios.",
+      "Optimized data reliability for the AssetOpsBench repository (1.3k+ GitHub stars) by performing rigorous data verification, ensuring high-quality benchmarks for FMSR and IoT model training.",
+      "Scaled technical engagement by administering a Codabench competition for 1,000+ participants, managing technical evaluations and the distribution of INR 100,000 in prize funding.",
+      "Enhanced project sustainability through the design of structured onboarding processes, successfully managing the end-to-end contributor lifecycle for a growing global community."
     ]
   },
   {
-    "title": "Founder & Manager",
-    "company": "techAmigo (Open Source)",
+    "title": "Co-Founder & Contributor",
+    "company": "TechAmigo (Open Source)",
     "location": "Remote",
-    "duration": "July 2025 – Present",
+    "duration": "2025 – Present",
     "description": [
-      "Started and currently managing the open-source organization techAmigo",
-      "Launched the organization's first product: npx create-server-startup package to scaffold server starter projects quickly"
+      "Leading an open-source organization dedicated to building high-impact developer productivity and competitive programming tools.",
+      "Reduced backend development overhead by architecting the create-server-startup NPM package, supporting 4 database integrations and JWT authentication for 50+ weekly active users.",
+      "Optimized platform security for the CPAmigo competitive coding platform, implementing zero-configuration protocols (Helmet, Rate Limiting, CORS) for a user base of 500+ registered members.",
+      "Managed project lifecycles for multiple high-impact tools, overseeing strategic growth from initial scaffolding to full-scale deployment using TypeScript and JavaScript."
     ]
   },
   {
-    "title": "Intern",
-    "company": "PW Skills",
-    "location": "Remote, India",
-    "duration": "August 2024 – Present",
+    "title": "Software & ML Intern",
+    "company": "PWSkills",
+    "location": "Remote",
+    "duration": "Sep 2024 – Nov 2025",
     "description": [
-      "Responsible for creating learning projects for full stack and AI/ML courses",
-      "Developing comprehensive project materials to teach in their educational programs"
+      "Developed and deployed production-grade full-stack microservices and machine learning models for educational technology.",
+      "Engineered 7 production-grade systems, including 3 Spring Boot microservice backends (RESTful APIs, Hibernate, MongoDB) and 4 ML models (TensorFlow, XGBoost) to streamline application workflows.",
+      "Secured full-stack interfaces by building responsive React.js and Angular frontends while validating 15+ API endpoints via Spring Security and Postman with H2 databases.",
+      "Established curriculum benchmarks after 2 primary projects were selected for use across PW Skills cohorts, directly influencing the learning standards for over 5,000 students."
     ]
   }
 ]

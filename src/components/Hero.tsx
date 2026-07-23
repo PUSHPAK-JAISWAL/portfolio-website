@@ -6,7 +6,7 @@ const socials = [
   { icon: Github, label: "github", href: "https://github.com/PUSHPAK-JAISWAL", color: "text-gruv-aqua" },
   { icon: Linkedin, label: "linkedin", href: "https://www.linkedin.com/in/pushpak-jaiswal/", color: "text-gruv-blue" },
   { icon: Globe, label: "geeksforgeeks", href: "https://www.geeksforgeeks.org/user/pushpakmoqg3/", color: "text-gruv-yellow" },
-  { icon: Award, label: "hackerrank", href: "https://www.hackerrank.com/skills-verification", color: "text-gruv-purple" },
+  { icon: Award, label: "hackerrank", href: "https://www.hackerrank.com/profile/pushpakmjaiswal", color: "text-gruv-purple" },
   { icon: Code2, label: "leetcode", href: "https://leetcode.com/u/pushpakmjaiswal/", color: "text-gruv-orange" },
 ];
 

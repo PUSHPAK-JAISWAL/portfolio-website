@@ -20,7 +20,7 @@ const SOCIALS: Record<string, string> = {
   github: "https://github.com/PUSHPAK-JAISWAL",
   linkedin: "https://www.linkedin.com/in/pushpak-jaiswal/",
   leetcode: "https://leetcode.com/u/pushpakmjaiswal/",
-  hackerrank: "https://www.hackerrank.com/skills-verification",
+  hackerrank: "https://www.hackerrank.com/profile/pushpakmjaiswal",
   geeksforgeeks: "https://www.geeksforgeeks.org/user/pushpakmoqg3/",
   gfg: "https://www.geeksforgeeks.org/user/pushpakmoqg3/",
 };

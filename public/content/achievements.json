@@ -1,52 +1,95 @@
 [
   {
+    "title": "1st Place - National Paper Presentation",
+    "description": "Won first place at the National Level Paper Presentation competition hosted by K.K. Wagh, Nashik (2026).",
+    "icon": "trophy",
+    "tags": ["Research", "Paper Presentation"]
+  },
+  {
+    "title": "1st Place - National Project Presentation",
+    "description": "Secured the top spot at the National Level Project Presentation event at K.K. Wagh, Nashik (2026).",
+    "icon": "trophy",
+    "tags": ["Project Presentation", "Innovation"]
+  },
+  {
+    "title": "1st Place - Mind Your Business Project Competition",
+    "description": "Won first place at the Mind Your Business Project Competition during the CSECodeCraft event at CSMSS Chh. Shahu College of Engineering (2026).",
+    "icon": "trophy",
+    "tags": ["Project Presentation", "Entrepreneurship"],
+    "link": "https://www.linkedin.com/feed/update/urn:li:activity:7474652338683535360/?highlightedUpdateUrn=urn%3Ali%3Aactivity%3A7474652338683535360&origin=SOCIAL_SHARE&utm_source=share&utm_medium=member_desktop&rcm=ACoAAFG2ZQ0BB0ZckxrYxTcpwDchZ5LuWiTjR5o"
+  },
+  {
+    "title": "1st Runner Up - CSECodeCraft Coding Competition",
+    "description": "Secured the second place podium finish in the technical coding competition at CSMSS Chh. Shahu College of Engineering (2026).",
+    "icon": "award",
+    "tags": ["Coding", "Competitive Programming"],
+    "link": "https://www.linkedin.com/feed/update/urn:li:activity:7474652338683535360/?highlightedUpdateUrn=urn%3Ali%3Aactivity%3A7474652338683535360&origin=SOCIAL_SHARE&utm_source=share&utm_medium=member_desktop&rcm=ACoAAFG2ZQ0BB0ZckxrYxTcpwDchZ5LuWiTjR5o"
+  },
+  {
+    "title": "4th Place & Yuva Bharat Award",
+    "description": "Awarded the Yuva Bharat Award alongside a 4th-place finish at the National Level Ideathon hosted by Government College of Engineering (GCE), Aurangabad (2026).",
+    "icon": "award",
+    "tags": ["Ideathon", "National Award"],
+    "link": "https://www.linkedin.com/posts/pushpak-jaiswal_agenticai-artificialintelligence-opensource-activity-7394374584235343872-NWf2?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFG2ZQ0BB0ZckxrYxTcpwDchZ5LuWiTjR5o"
+  },
+  {
+    "title": "3rd Place - TechnoSpark Hackathon",
+    "description": "Achieved a podium finish at the TechnoSpark Hackathon hosted by MIT, Chhatrapati Sambhajinagar (2025).",
+    "icon": "trophy",
+    "tags": ["Hackathon", "Development"],
+    "link": "https://www.linkedin.com/posts/pushpak-jaiswal_hackathon-technospark3-articleai-activity-7322174972016111616-AXWk?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFG2ZQ0BB0ZckxrYxTcpwDchZ5LuWiTjR5o"
+  },
+  {
+    "title": "3rd Place - Supernova Stellar Hackathon",
+    "description": "Placed third overall in the Supernova Stellar Hackathon organized by MGM University (2025).",
+    "icon": "trophy",
+    "tags": ["Hackathon", "Innovation"],
+    "link": "https://www.linkedin.com/posts/jaykumarpardeshi_hackathon-innovation-agritech-ugcPost-7377319120444473344-27Eu?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFG2ZQ0BB0ZckxrYxTcpwDchZ5LuWiTjR5o"
+  },
+  {
     "title": "First Place - College C Genius Competition",
-    "description": "Secured first place in the competitive C programming competition",
+    "description": "Secured first place in the competitive C programming competition.",
     "icon": "trophy",
     "tags": ["Programming", "Competition"]
   },
   {
     "title": "First Place - Engineers' Day Coding Competition",
-    "description": "Won first place in the Engineers' Day coding competition",
+    "description": "Won first place in the Engineers' Day coding competition.",
     "icon": "trophy",
     "tags": ["Coding", "Competition"]
   },
   {
-    "title": "Hackathon Winner",
-    "description": "Achieved podium positions in 2 hackathons, demonstrating innovation and problem-solving skills",
-    "icon": "trophy",
-    "tags": ["Hackathon", "Innovation"]
-  },
-  {
     "title": "4th Place - Matpo Programming Competition",
-    "description": "Secured 4th position in the Matpo programming competition",
+    "description": "Secured 4th position in the Matpo programming competition.",
     "icon": "award",
     "tags": ["Programming", "Competition"]
   },
   {
     "title": "5-Star Rating on HackerRank",
-    "description": "Earned 5-star ratings in both Java and C programming on HackerRank",
+    "description": "Earned 5-star ratings in both Java and C programming on HackerRank.",
     "icon": "star",
     "tags": ["Java", "C", "Problem Solving"],
-    "link": "https://www.hackerrank.com/skills-verification"
+    "link": "https://www.hackerrank.com/profile/pushpakmjaiswal"
   },
   {
     "title": "3-Star GeeksforGeeks & College Rank #1",
-    "description": "Achieved 3-star rating on GeeksforGeeks and secured 1st rank on college leaderboard",
+    "description": "Achieved 3-star rating on GeeksforGeeks and secured 1st rank on college leaderboard.",
     "icon": "star",
     "tags": ["DSA", "Competitive Programming"],
     "link": "https://www.geeksforgeeks.org/user/pushpakmoqg3/"
   },
   {
-    "title": "Vice-Captain - Terra House",
-    "description": "Led Terra House as Vice-Captain at Podar International School (ICSE) in 2019",
-    "icon": "award",
-    "tags": ["Leadership", "Extracurricular"]
+    "title":"Complete GFG160 Streak",
+    "description":"Succesfully completed the DSA streak on gfg",
+    "icon":"star",
+    "tags":["Discipline","Coding"],
+    "link": "https://www.linkedin.com/posts/pushpak-jaiswal_geeksforgeeks-gfg160-activity-7311988953715294210-aqxf?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFG2ZQ0BB0ZckxrYxTcpwDchZ5LuWiTjR5o"
   },
   {
-    "title": "Sports Captain - Hockey Team",
-    "description": "Captained the Under-14 Hockey team in 2018. Played football, basketball, and hockey at divisional level",
-    "icon": "award",
-    "tags": ["Sports", "Leadership"]
+    "title": "Hacktober fest Completion 2025",
+    "description":"Succesfully completed the Streak for Hacktober fest with more than 6 pr merged",
+    "icon":"award",
+    "tags":["Discipline","Coding","Innovation"],
+    "link": "https://www.linkedin.com/posts/pushpak-jaiswal_hacktoberfest-opensource-codeforgood-activity-7383209255790612480-_zxR?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFG2ZQ0BB0ZckxrYxTcpwDchZ5LuWiTjR5o"
   }
 ]
