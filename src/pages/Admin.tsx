@@ -13,7 +13,7 @@ import { Download, Upload, Plus, Trash2, RotateCcw, Lock, ArrowLeft } from "luci
 
 const ADMIN_PASSWORD_KEY = "portfolio_admin_pw";
 const ADMIN_AUTH_KEY = "portfolio_admin_auth";
-const DEFAULT_PASSWORD = "admin123"; // change on first login
+const DEFAULT_PASSWORD = "admin123"; 
 
 type Field = {
   name: string;
