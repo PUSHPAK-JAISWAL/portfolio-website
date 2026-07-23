@@ -107,10 +107,14 @@ const SCHEMAS: Record<ContentKey, { label: string; fields: Field[]; newItem: () 
 function Editor({ contentKey }: { contentKey: ContentKey }) {
   const schema = SCHEMAS[contentKey];
   const [items, setItems] = useState<any[]>([]);
+  const [drafts, setDrafts] = useState<Record<string, string>>({});
   const fileRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    fetchContent<any>(contentKey).then(setItems);
+    fetchContent<any>(contentKey).then((d) => {
+      setItems(d);
+      setDrafts({});
+    });
   }, [contentKey]);
 
   const commit = (next: any[]) => {
@@ -124,6 +128,8 @@ function Editor({ contentKey }: { contentKey: ContentKey }) {
     const next = [...items];
     let v: any = value;
     if (field.type === "list") {
+      // Preserve raw typed text so separators/spaces don't get stripped mid-typing.
+      setDrafts((d) => ({ ...d, [`${idx}:${field.name}`]: value }));
       v = isMultiline(field)
         ? value.split("\n").map((s: string) => s.trim()).filter(Boolean)
         : value.split(",").map((s: string) => s.trim()).filter(Boolean);
@@ -134,13 +140,23 @@ function Editor({ contentKey }: { contentKey: ContentKey }) {
     commit(next);
   };
 
-  const addItem = () => commit([schema.newItem(), ...items]);
-  const removeItem = (idx: number) => commit(items.filter((_, i) => i !== idx));
+  const clearDraft = (idx: number, field: Field) => {
+    setDrafts((d) => {
+      const k = `${idx}:${field.name}`;
+      if (!(k in d)) return d;
+      const { [k]: _, ...rest } = d;
+      return rest;
+    });
+  };
+
+  const addItem = () => { setDrafts({}); commit([schema.newItem(), ...items]); };
+  const removeItem = (idx: number) => { setDrafts({}); commit(items.filter((_, i) => i !== idx)); };
   const moveItem = (idx: number, dir: -1 | 1) => {
     const j = idx + dir;
     if (j < 0 || j >= items.length) return;
     const next = [...items];
     [next[idx], next[j]] = [next[j], next[idx]];
+    setDrafts({});
     commit(next);
   };
 
