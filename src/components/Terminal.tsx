@@ -120,8 +120,10 @@ const Terminal = ({ open, onClose, files, active, onNavigate }: Props) => {
         break;
       }
       case "admin":
-        push({ kind: "out", text: "→ /admin" });
-        setTimeout(() => (window.location.href = "/admin"), 150);
+        push({ kind: "out", text: "→ admin" });
+        setTimeout(() => {
+          window.location.hash = "#/admin";
+        }, 150);
         break;
       case "echo":
         push({ kind: "out", text: arg });
