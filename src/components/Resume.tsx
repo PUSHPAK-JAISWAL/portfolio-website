@@ -3,7 +3,8 @@ import { Download, FileText } from "lucide-react";
 const Resume = () => {
   const handleDownload = () => {
     const a = document.createElement("a");
-    a.href = "/resume.pdf";
+    // Dynamically prefixes your Vite base path (e.g., "/portfolio-website/resume.pdf")
+    a.href = `${import.meta.env.BASE_URL}resume.pdf`;
     a.download = "Pushpak_Jaiswal_Resume.pdf";
     document.body.appendChild(a);
     a.click();
