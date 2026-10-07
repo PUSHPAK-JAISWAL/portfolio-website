@@ -1,9 +1,10 @@
-import { Mail, Phone, Linkedin, Github, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa6";
 
 const channels = [
   { label: "email", value: "pushpakmjaiswal@gmail.com", href: "mailto:pushpakmjaiswal@gmail.com", icon: Mail, color: "text-gruv-orange", cta: "send mail" },
-  { label: "linkedin", value: "in/pushpak-jaiswal", href: "https://www.linkedin.com/in/pushpak-jaiswal/", icon: Linkedin, color: "text-gruv-blue", cta: "open dm" },
-  { label: "github", value: "PUSHPAK-JAISWAL", href: "https://github.com/PUSHPAK-JAISWAL", icon: Github, color: "text-gruv-aqua", cta: "open profile" },
+  { label: "linkedin", value: "in/pushpak-jaiswal", href: "https://www.linkedin.com/in/pushpak-jaiswal/", icon: FaLinkedin, color: "text-gruv-blue", cta: "open dm" },
+  { label: "github", value: "PUSHPAK-JAISWAL", href: "https://github.com/PUSHPAK-JAISWAL", icon: FaGithub, color: "text-gruv-aqua", cta: "open profile" },
   { label: "whatsapp", value: "+91 8484807511", href: "https://wa.me/918484807511", icon: Phone, color: "text-gruv-yellow", cta: "chat" },
 ];
 

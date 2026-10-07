@@ -119,7 +119,7 @@ This project adheres to the following community standards:
 - ✅ License (MIT)
 - ✅ Security Policy
 - ✅ Accessibility Statement
-- ��� Pull Request Template
+- ✅ Pull Request Template
 - ✅ Issue Templates
 
 ## 🤝 Contributing

@@ -1,7 +1,11 @@
 {
-  "name": "vite_react_shadcn_ts",
+  "name": "portfolio-website",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Terminal-themed developer portfolio for Pushpak Jaiswal built with React, TypeScript, Vite, Tailwind CSS, and Gruvbox aesthetics.",
+  "author": "Pushpak Jaiswal <pushpakmjaiswal@gmail.com> (https://github.com/PUSHPAK-JAISWAL)",
+  "homepage": "https://pushpak-jaiswal.github.io/portfolio-website/",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -53,6 +57,7 @@
     "react-day-picker": "^8.10.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.89.0",
+    "react-icons": "^5.7.0",
     "react-resizable-panels": "^2.1.9",
     "react-router-dom": "^7.18.4",
     "recharts": "^3.10.1",

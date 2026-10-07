@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Github, ExternalLink, Star, GitFork } from "lucide-react";
+import { ExternalLink, Star, GitFork } from "lucide-react";
+import { FaGithub } from "react-icons/fa6";
 import { useToast } from "@/hooks/use-toast";
 
 interface Repository {
@@ -112,7 +113,7 @@ const Projects = () => {
                     rel="noopener noreferrer"
                     className="flex-1 flex items-center justify-center gap-1.5 border border-border px-2 py-1 hover:border-primary hover:text-primary transition-colors"
                   >
-                    <Github className="w-3 h-3" /> code
+                    <FaGithub className="w-3 h-3" /> code
                   </a>
                   {repo.homepage && (
                     <a

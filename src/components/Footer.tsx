@@ -1,8 +1,9 @@
-import { Github, Linkedin, Award, Code2, Trophy } from "lucide-react";
+import { Award, Code2, Trophy } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa6";
 
 const links = [
-  { href: "https://github.com/PUSHPAK-JAISWAL", icon: Github, label: "GitHub" },
-  { href: "https://www.linkedin.com/in/pushpak-jaiswal/", icon: Linkedin, label: "LinkedIn" },
+  { href: "https://github.com/PUSHPAK-JAISWAL", icon: FaGithub, label: "GitHub" },
+  { href: "https://www.linkedin.com/in/pushpak-jaiswal/", icon: FaLinkedin, label: "LinkedIn" },
   { href: "https://www.geeksforgeeks.org/user/pushpakmoqg3/", icon: Award, label: "GeeksforGeeks" },
   { href: "https://www.hackerrank.com/profile/pushpakmjaiswal", icon: Trophy, label: "HackerRank" },
   { href: "https://leetcode.com/u/pushpakmjaiswal/", icon: Code2, label: "LeetCode" },

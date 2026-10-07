@@ -1,4 +1,5 @@
-import { Trophy, Award, Star, ExternalLink, Linkedin } from "lucide-react";
+import { Trophy, Award, Star, ExternalLink } from "lucide-react";
+import { FaLinkedin } from "react-icons/fa6";
 import { useContent } from "@/lib/content";
 
 interface Achievement {
@@ -82,7 +83,7 @@ const Achievements = () => {
                             aria-label={`Open LinkedIn post for achievement: ${a.title}`}
                             className="flex-1 min-w-[6rem] min-h-9 inline-flex items-center justify-center gap-1.5 border border-border px-2 py-1 hover:border-gruv-blue hover:text-gruv-blue focus-visible:border-gruv-blue focus-visible:text-gruv-blue focus-visible:outline-none transition-colors"
                           >
-                            <Linkedin className="w-3 h-3" aria-hidden="true" /> post
+                            <FaLinkedin className="w-3 h-3" aria-hidden="true" /> post
                           </a>
                         )}
                       </div>
