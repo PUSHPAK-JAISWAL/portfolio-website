@@ -1,6 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../tailwind.config.js";
 
 /* Gruvbox Dark — Linux rice theme. No gradients. Mono everywhere. */
 
